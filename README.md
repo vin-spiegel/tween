@@ -33,25 +33,22 @@ local fadeTween = tween.new(2, properties, {bgcolor = {0,0,0}, fgcolor={255,0,0}
 fadeTween:update(dt)
 ```
 
-# Interface
+# 인터페이스
 
-## Tween creation
+## Tween 객체 만들기
 
 ``` lua
 local t = tween.new(duration, subject, target, [easing])
 ```
 
-Creates a new tween.
+* `duration` 트위닝에 걸리는 시간. 양수여야 합니다
+* `subject` 에는 네코랜드 객체가 들어갑니다.
+* `target` 네코랜드 객체에 있는 키와 값을 테이블로 받습니다
+* `easing` 트위닝을 위한 각종 효과
 
-* `duration` means how much the change will take until it's finished. It must be a positive number.
-* `subject` must be a table with at least one key-value. Its values will be gradually changed by the tween until they look like `target`. All the values must be numbers, or tables with numbers.
-* `target` must be a table with at least the same keys as `subject`. Other keys will be ignored.
-* `easing` can be either a function or a function name (see the easing section below). It's default value is `'linear'`
-* `t` is the object that must be used to perform the changes - see the "Tween methods" section below.
+`t:update(dt)` 함수에 델타타임을 제공해야 합니다
 
-This function only creates and returns the tween. It must be captured in a variable and updated via `t:update(dt)` in order for the changes to take place.
-
-## Tween methods
+## Tween 메소드
 
 ``` lua
 local complete = t:update(dt)
