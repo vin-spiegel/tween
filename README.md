@@ -8,7 +8,7 @@ tween은 [트위닝](http://en.wikipedia.org/wiki/Tweening)을 도와주는 라�
 # 예제
 
 ```lua
-local tween = require 'tween'
+local tween = require 'tween.init'
 
 -- increase the volume of music from 0 to 5 in 10 seconds
 local music = { volume = 0, path = "path/to/file.mp3" }
