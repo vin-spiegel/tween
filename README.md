@@ -1,12 +1,11 @@
-# tween.lua
+# tween
 
 [![Build Status](https://travis-ci.org/kikito/tween.lua.svg?branch=master)](https://travis-ci.org/kikito/tween.lua)
 [![Coverage Status](https://coveralls.io/repos/github/kikito/tween.lua/badge.svg?branch=master)](https://coveralls.io/github/kikito/tween.lua?branch=master)
 
-tween.lua is a small library to perform [tweening](http://en.wikipedia.org/wiki/Tweening) in Lua. It has a minimal
-interface, and it comes with several easing functions.
+tween은 [트위닝](http://en.wikipedia.org/wiki/Tweening)을 도와주는 라이브러리입니다 네코랜드용으로 수정중입니다
 
-# Examples
+# 예제
 
 ```lua
 local tween = require 'tween'
@@ -17,11 +16,15 @@ local musicTween = tween.new(10, music, {volume = 5})
 ...
 musicTween:update(dt)
 
--- make some text fall from the top of the screen, bouncing on y=300, in 4 seconds
-local label = { x=200, y=0, text = "hello" }
-local labelTween = tween.new(4, label, {y=300}, 'outBounce')
-...
-labelTween:update(dt)
+-- panel 객체를 y=400 까지 떨어트리고 튀어오르는 효과
+local panel = Panel(Rect(300, 0, 30, 30))
+panel.color = Color(255, 0, 0)
+local panelTween = tween.new(4, panel, {y = 400}, "outBounce")
+Client.onTick.Add(
+    function(dt)
+        panelTween:update(dt)
+    end
+)
 
 -- fade background from white to black and foregrond from black to red in 2 seconds
 -- Notice that you can use subtables with tween
@@ -30,18 +33,6 @@ local fadeTween = tween.new(2, properties, {bgcolor = {0,0,0}, fgcolor={255,0,0}
 ...
 fadeTween:update(dt)
 ```
-
-# Demo
-
-There is a demo in the "demo" branch of this repo:
-
-https://github.com/kikito/tween.lua/tree/demo
-
-![demo image](https://kikito.github.io/tween.lua/img/tween-demo.gif)
-
-You will need [LÖVE](http://love2d.org) to execute the demo.
-
-In the animation above, you can see how the user can move time "forwards or backwards" by pressing and releasing the space key.
 
 # Interface
 
