@@ -20,11 +20,10 @@ musicTween:update(dt)
 local panel = Panel(Rect(300, 0, 30, 30))
 panel.color = Color(255, 0, 0)
 local panelTween = tween.new(4, panel, {y = 400}, "outBounce")
-Client.onTick.Add(
-    function(dt)
-        panelTween:update(dt)
-    end
-)
+local tick = panelTween:start()
+
+-- 리턴받은 tick 함수는 onTick Remove가 가능합니다
+-- Client.onTick.Remove(tick)
 
 -- fade background from white to black and foregrond from black to red in 2 seconds
 -- Notice that you can use subtables with tween

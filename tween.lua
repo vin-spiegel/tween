@@ -473,7 +473,7 @@ function Tween:update(dt)
 end
 
 -- 네코랜드 객체 onTick 등록
-function Tween:add()
+function Tween:start()
   local func = function(dt)
     self:update(dt)
   end
